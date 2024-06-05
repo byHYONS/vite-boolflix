@@ -1,6 +1,6 @@
 <script>
 // import:
-import { store } from 'vue';
+
 
 export default {
     nome: 'cardComponent',
@@ -9,7 +9,7 @@ export default {
     },
     data() {
         return {
-            store,
+           
 
         }
     },
@@ -29,6 +29,6 @@ export default {
 
 <!-- STYLE -->
 <style lang="scss" scoped>
-// import</style>
+
 
 </style>

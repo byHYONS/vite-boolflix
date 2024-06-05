@@ -31,9 +31,9 @@ export default {
 <!-- HTML -->
 <template>
   
-  <h1 class="ta-center mt-20"> {{ store.text }}</h1>
+  <h1 class="ta-center"> {{ store.text }}</h1>
   
-  <headerComponent />
+  <headerComponent class="header" />
 
   <listComponent />
 

@@ -33,6 +33,6 @@ export default {
 
 <!-- STYLE -->
 <style lang="scss" scoped>
-// import</style>
+// import
 
 </style>
