@@ -2,11 +2,12 @@
 <script>
 // import:
 import { store } from './store';
-import newComponent from './components/NewComponent.vue';
-
+import headerComponent from './components/HeaderComponent.vue';
+import listComponent from './components/ListComponent.vue';
+import footerComponent from './components/FooterComponent.vue';
 
 export default {
-   nome: 'nameComponent',
+   nome: 'AppMain',
    props: {
 
    },
@@ -17,7 +18,10 @@ export default {
       }
    },
    components: {
-      newComponent,
+      headerComponent,
+      listComponent,
+      footerComponent,
+
    }
 }
 
@@ -28,7 +32,12 @@ export default {
 <template>
   
   <h1 class="ta-center mt-20"> {{ store.text }}</h1>
-  <newComponent />
+  
+  <headerComponent />
+
+  <listComponent />
+
+  <footerComponent />
 
 </template>
 
