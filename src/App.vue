@@ -30,13 +30,16 @@ export default {
 
    },
    methods: {
+      // chiamata API:
       apiCall() {
+         // query params:
          const params = {
             api_key: this.store.apiInfo.apiKey,
             query: this.store.apiInfo.query,
 
          }
 
+         // destrutturo ed estraggo parametri da store.apiInfo per migliorare leggibilità:
          const {url, searchMovie, searchTv} = this.store.apiInfo
 
          // chiamata film:
@@ -55,12 +58,19 @@ export default {
 
 
       },
-
+      // bottone search e select:
       runSearch() {
          console.log('ho premuto il bottone search');
+
+
+
       },
+
+      // bottone reset:
       reset() {
          console.log('ho premuto il bottorìne reset');
+         this.store.userSearch = '';
+         this.store.selectGenre = 'all';
       }
    },
    created() {
@@ -80,7 +90,7 @@ export default {
    @reset="reset()"
    @changeSelect="runSearch()" />
    
-      <p class="ta-center mt-25"> {{ store.tvRisults }}</p>
+      <!-- <p class="ta-center mt-25"> {{ store.movieRisults }}</p> -->
    
    <listComponent />
 

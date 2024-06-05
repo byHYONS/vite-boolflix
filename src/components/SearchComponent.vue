@@ -39,12 +39,14 @@ export default {
         </select>
 
         <!-- bottone ricerca -->
-       <button class="btn search"
-       @click="$emit('search')">Search</button>
-
-       <!-- bottone reset -->
-       <button class="btn reset"
-       @click="$emit('reset')">Reset</button>
+        <div class="buttons">
+            <button class="btn search"
+            @click="$emit('search')">Search</button>
+     
+            <!-- bottone reset -->
+            <button class="btn reset"
+            @click="$emit('reset')">Reset</button>
+        </div>
 
     </div>
 
@@ -57,9 +59,14 @@ export default {
 // import:
 @use '../assets/scss/partials/variables' as *;
 
-// .search-bar {
+.search-bar {
+    text-align: center;
+    .buttons {
+        margin-top: 1.25rem;
+        display: inline-block;
+    }
     
-// }
+}
 
 
 </style>

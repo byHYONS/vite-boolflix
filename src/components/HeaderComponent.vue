@@ -54,7 +54,7 @@ export default {
 
 header {
     width: 100%;
-    height: 5rem;
+    min-height: 5rem;
     background-color: $black;
     align-content: center;
     .menu {
@@ -68,6 +68,18 @@ header {
         font-size: 3rem;
         font-weight: 900;
         color: $text3;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    header {
+        .menu {
+            flex-direction: column;
+            margin-bottom: 2.1875rem;
+        }
+        h1 {
+            margin: 1.5625rem 0;
+        }
     }
 }
 

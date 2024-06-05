@@ -8,6 +8,6 @@
     background-blend-mode: multiply;
 }
 
-@mixin col-x($gap, $col) {
+@mixin col-x($col, $gap) {
     width: calc(100% / $col - ($gap * ($col - 1) / $col));
 }
