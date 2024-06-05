@@ -1,15 +1,14 @@
 <script>
 // import:
-
+import { store } from '../store';
 
 export default {
     nome: 'searchComponent',
-    props: {
-
-    },
+    emits: ['search', 'reset', 'changeSelect'],
+    
     data() {
         return {
-           
+           store,
 
         }
     },
@@ -24,9 +23,14 @@ export default {
 
     <div class="search-bar">
 
-        <input type="text" placeholder="Search">
+        <!-- input di ricerca -->
+        <input type="text" placeholder="Search"
+        v-model="store.userSearch">
 
-        <select name="movie-genre" id="movie-genre">
+        <!-- menù selezione a tendina -->
+        <select name="movie-genre" id="movie-genre"
+        v-model="store.selectGenre"
+        @change="$emit('changeSelect')">
 
             <option value="all">Select genre</option>
             <option value="movie">Movie</option>
@@ -34,8 +38,13 @@ export default {
 
         </select>
 
-       <button class="btn search">Search</button>
-       <button class="btn reset">Reset</button>
+        <!-- bottone ricerca -->
+       <button class="btn search"
+       @click="$emit('search')">Search</button>
+
+       <!-- bottone reset -->
+       <button class="btn reset"
+       @click="$emit('reset')">Reset</button>
 
     </div>
 
@@ -48,9 +57,9 @@ export default {
 // import:
 @use '../assets/scss/partials/variables' as *;
 
-.search-bar {
+// .search-bar {
     
-}
+// }
 
 
 </style>

@@ -3,8 +3,11 @@ import { reactive } from "vue";
 
 export const store = reactive({
     userSearch: '',
+    selectGenre: 'all',
+    // risultato delle chiamate API:
     movieRisults: [],
     tvRisults: [],
+    // API info:
     apiInfo: {
         url: 'https://api.themoviedb.org/3/',
         searchMovie: 'search/movie?',
@@ -16,6 +19,5 @@ export const store = reactive({
         language: 'it-IT',
         page: 1,
     }
-
 
 })

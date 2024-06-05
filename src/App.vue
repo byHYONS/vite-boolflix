@@ -54,8 +54,13 @@ export default {
          });
 
 
+      },
 
-
+      runSearch() {
+         console.log('ho premuto il bottone search');
+      },
+      reset() {
+         console.log('ho premuto il bottorìne reset');
       }
    },
    created() {
@@ -69,10 +74,14 @@ export default {
 <!-- HTML -->
 <template>
 
-   <h1 class="ta-center"> {{ store.tvRisults }}</h1>
-
-   <headerComponent class="header" />
-
+   
+   <headerComponent class="header" 
+   @search="runSearch()"
+   @reset="reset()"
+   @changeSelect="runSearch()" />
+   
+      <p class="ta-center mt-25"> {{ store.tvRisults }}</p>
+   
    <listComponent />
 
    <footerComponent />
@@ -87,4 +96,3 @@ export default {
 
 
 </style>
-

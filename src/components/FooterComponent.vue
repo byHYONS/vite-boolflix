@@ -9,7 +9,7 @@ export default {
     },
     data() {
         return {
-           
+           logo: 'BOOLFLIX'
 
         }
     },
@@ -22,6 +22,18 @@ export default {
 <!-- HTML -->
 <template>
 
+    <!-- footer -->
+    <footer>
+
+        <div class="footer">
+            <div class="creats">
+
+                <!-- logo brand -->
+                <h4> {{ logo }} </h4>
+            </div>
+        </div>
+
+    </footer>
     
 
 </template>
@@ -29,6 +41,30 @@ export default {
 
 <!-- STYLE -->
 <style lang="scss" scoped>
-// import
+// import:
+@use '../assets/scss/partials/variables' as *;
+
+
+footer {
+    width: 100%;
+    height: 6.25rem;
+    background-color: $black;
+    border-top: .15rem solid $red;
+    align-content: center;
+
+    .footer {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: $text;
+    }
+}
 
 </style>

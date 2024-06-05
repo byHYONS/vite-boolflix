@@ -4,9 +4,8 @@ import searchComponent from './SearchComponent.vue';
 
 export default {
     nome: 'headerComponent',
-    props: {
-
-    },
+    emits: ['serch', 'reset', 'changeSelect'],
+    
     data() {
         return {
             logo: 'BOOLFLIX'
@@ -29,8 +28,14 @@ export default {
 
         <div class="menu">
 
-            <h1>{{logo}}</h1>
-            <searchComponent />
+            <!-- logo brand -->
+            <h1> {{logo}} </h1>
+
+            <!-- componente per la ricerca -->
+            <searchComponent 
+            @search="$emit('search')"
+            @reset="$emit('reset')"
+            @changeSelect="$emit('changeSelect')" />
 
         </div>
 
