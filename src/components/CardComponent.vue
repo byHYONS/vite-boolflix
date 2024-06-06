@@ -2,9 +2,12 @@
 // istanza vue:
 export default {
     nome: 'cardComponent',
-    props: {
-        card: String,
-    },
+    props: [
+        'title',
+        'titleOrig',
+        'language',
+        'vote'
+    ],
     data() {
         return {
           
@@ -22,10 +25,10 @@ export default {
 
     <div class="card">
 
-        <p v-show=""> <strong>Titolo:</strong> {{ card.name }} </p>
-        <p> <strong>Titolo originale:</strong> {{ card.title }} </p>
-        <p> <strong>lingua:</strong> {{ card.title }} </p>
-        <p> <strong>Voto:</strong> {{ card.title }} </p>
+        <p v-show="title.length"> <strong>Titolo:</strong> {{ title }} </p>
+        <p> <strong>Titolo originale:</strong> {{ titleOrig }} </p>
+        <p> <strong>lingua:</strong> {{ language }} </p>
+        <p> <strong>Voto:</strong> {{ vote }} </p>
 
     </div>
 

@@ -31,7 +31,10 @@ export default {
 
                 <cardComponent class="col ht-100 bdb"
                 v-for="(cards, index) in store.tvRisults"
-                :card="cards"
+                :title="cards.title ? cards.title : cards.name"                
+                :titleOrig="cards.original_title ? cards.original_title : cards.original_name" 
+                :language="cards.original_language" 
+                :vote="cards.vote_count"              
                 :key="index" />
 
             </div>
