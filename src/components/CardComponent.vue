@@ -22,7 +22,10 @@ export default {
 
     <div class="card">
 
-        <p> {{ card.title }} </p>
+        <p v-show=""> <strong>Titolo:</strong> {{ card.name }} </p>
+        <p> <strong>Titolo originale:</strong> {{ card.title }} </p>
+        <p> <strong>lingua:</strong> {{ card.title }} </p>
+        <p> <strong>Voto:</strong> {{ card.title }} </p>
 
     </div>
 

@@ -61,11 +61,20 @@ export default {
 
 .search-bar {
     text-align: center;
+
     .buttons {
-        margin-top: 1.25rem;
+       
         display: inline-block;
     }
-    
+}
+
+@media screen and (max-width: 576px) {
+    .search-bar {
+        .buttons {
+            margin-top: 1.25rem;
+        }
+
+    }
 }
 
 
