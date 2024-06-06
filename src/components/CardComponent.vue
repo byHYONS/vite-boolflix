@@ -29,9 +29,8 @@ export default {
     <div class="card">
 
         <div class="image">
-            <img
-            :src="imageInfo.url + imageInfo.sizePoster + imgPoster" 
-            :alt="imgPoster ? title : ''">
+            <img :src="imgPoster ? imageInfo.url + imageInfo.sizePoster + imgPoster : '../../public/img/no-image.webp'"
+                :alt="imgPoster ? title : ''">
 
         </div>
 
@@ -39,21 +38,21 @@ export default {
             <p v-show="title.length"> <strong>Titolo:</strong> {{ title }} </p>
             <p> <strong>Titolo originale:</strong> {{ titleOrig }} </p>
             <p> <strong>Voto:</strong> {{ vote }} </p>
-    
+
             <div v-if="language === 'it'">
-                <strong>lingua: </strong> 
+                <strong>lingua: </strong>
                 <img src="../../public/flags/it.svg" alt="language">
             </div>
             <div v-else-if="language === 'en'">
-                <strong>lingua: </strong> 
+                <strong>lingua: </strong>
                 <img src="../../public/flags/us.svg" alt="language">
             </div>
             <div v-else-if="language === 'sq'">
-                <strong>lingua: </strong> 
+                <strong>lingua: </strong>
                 <img src="../../public/flags/al.svg" alt="language">
             </div>
-            <div v-else> 
-                <strong>lingua:</strong> {{ language }} 
+            <div v-else>
+                <strong>lingua:</strong> {{ language }}
             </div>
         </div>
 
@@ -71,10 +70,14 @@ export default {
 
 
 .card {
-    height: 350px;
+    height: 23.75rem;
     overflow: hidden;
     background-color: $black;
     color: $text;
+
+    &:hover .image {
+        display: none;
+    }
 
     .image {
 
@@ -82,6 +85,7 @@ export default {
             width: 100%;
             height: auto;
             object-fit: cover;
+            object-position: center;
         }
 
 
@@ -90,7 +94,7 @@ export default {
 
     .hidden {
         // display: none;
-        padding: 1.25rem;
+        padding: 1.5625rem;
         
 
         img {

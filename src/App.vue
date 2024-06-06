@@ -61,7 +61,7 @@ export default {
             }
          });
       },
-      
+
       // bottone search e select:
       runSearch() {
          this.store.results = [];        
@@ -71,6 +71,8 @@ export default {
          this.apiCall(this.store.userSearch);
 
       },
+
+      
 
       // bottone reset:
       reset() {

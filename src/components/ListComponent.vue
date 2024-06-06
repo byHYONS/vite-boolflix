@@ -29,7 +29,7 @@ export default {
         <div class="container-80">
             <div class="row gap-25 py-50">
 
-                <cardComponent class="col ht-100 bdb"
+                <cardComponent class="col"
                 v-for="(cards, index) in store.results"
                 :title="cards.title ? cards.title : cards.name"                
                 :titleOrig="cards.original_title ? cards.original_title : cards.original_name" 
