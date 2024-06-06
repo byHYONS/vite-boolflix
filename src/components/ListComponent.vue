@@ -30,7 +30,7 @@ export default {
             <div class="row gap-25 my-50">
 
                 <cardComponent class="col ht-100 bdb"
-                v-for="(cards, index) in store.movieRisults"
+                v-for="(cards, index) in store.risults"
                 :title="cards.title ? cards.title : cards.name"                
                 :titleOrig="cards.original_title ? cards.original_title : cards.original_name" 
                 :language="cards.original_language" 

@@ -37,7 +37,7 @@ export default {
             <strong>lingua: </strong> 
             <img src="../../public/flags/us.svg" alt="language">
         </div>
-        <div v-else-if="language === 'al'">
+        <div v-else-if="language === 'sq'">
             <strong>lingua: </strong> 
             <img src="../../public/flags/al.svg" alt="language">
         </div>

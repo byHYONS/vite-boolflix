@@ -31,11 +31,11 @@ export default {
    },
    methods: {
       // chiamata API:
-      apiCall() {
+      apiCall(query) {
          // query params:
          const params = {
             api_key: this.store.apiInfo.apiKey,
-            query: this.store.apiInfo.query,
+            query: query,
 
          }
 
@@ -56,12 +56,24 @@ export default {
             this.store.tvRisults = response.data.results
          });
 
+         if (this.store.selectGenre === 'tv') {
+            this.store.risults = this.store.tvRisults;
+         } else if (this.store.selectGenre === 'movie') {
+            this.store.risults = this.store.movieRisults;
+         } else {
+            this.store.risults = [];
+            this.store.risults = this.store.risults.concat(this.store.tvRisults, this.store.movieRisults) ;
+         }
+
 
       },
       // bottone search e select:
       runSearch() {
          console.log('ho premuto il bottone search');
 
+         if (!this.store.userSearch.toLowerCase().trim()) return
+
+         this.apiCall(this.store.userSearch);
 
 
       },
@@ -74,7 +86,8 @@ export default {
       }
    },
    created() {
-      this.apiCall()
+      this.runSearch()
+      
    },
 }
 

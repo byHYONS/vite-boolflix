@@ -7,6 +7,7 @@ export const store = reactive({
     // risultato delle chiamate API:
     movieRisults: [],
     tvRisults: [],
+    risults: [],
     // API info:
     apiInfo: {
         url: 'https://api.themoviedb.org/3/',
