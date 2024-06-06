@@ -5,8 +5,6 @@ export const store = reactive({
     userSearch: '',
     selectGenre: 'all',
     // risultato delle chiamate API:
-    movieRisults: [],
-    tvRisults: [],
     results: [],
     // API info:
     apiInfo: {
@@ -19,6 +17,11 @@ export const store = reactive({
         query: 'all',
         language: 'it-IT',
         page: 1,
+    },
+    imageInfo: {
+        url: 'https://image.tmdb.org/t/p/',
+        sizeBackdrop: 'w780',
+        sizePoster: 'w342',
     }
 
 })

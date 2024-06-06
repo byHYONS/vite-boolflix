@@ -27,7 +27,7 @@ export default {
 
     <main>
         <div class="container-80">
-            <div class="row gap-25 my-50">
+            <div class="row gap-25 py-50">
 
                 <cardComponent class="col ht-100 bdb"
                 v-for="(cards, index) in store.results"
@@ -35,6 +35,9 @@ export default {
                 :titleOrig="cards.original_title ? cards.original_title : cards.original_name" 
                 :language="cards.original_language" 
                 :vote="cards.vote_count"              
+                :imgBackdrop="cards.backdrop_path"              
+                :imgPoster="cards.poster_path"              
+                :imageInfo="store.imageInfo"              
                 :key="index" />
 
             </div>
@@ -53,6 +56,9 @@ export default {
 @use '../assets/scss/partials/variables' as *;
 
 main {
+    .container-80 {
+        min-height: calc(100vh - 11.25rem);
+    }
 
     .col {
         @include col-x(4, 25px)

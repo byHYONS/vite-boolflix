@@ -6,7 +6,10 @@ export default {
         'title',
         'titleOrig',
         'language',
-        'vote'
+        'vote',
+        'imgBackdrop',
+        'imgPoster',
+        'imageInfo'
     ],
     data() {
         return {
@@ -25,25 +28,35 @@ export default {
 
     <div class="card">
 
-        <p v-show="title.length"> <strong>Titolo:</strong> {{ title }} </p>
-        <p> <strong>Titolo originale:</strong> {{ titleOrig }} </p>
-        <p> <strong>Voto:</strong> {{ vote }} </p>
+        <div class="image">
+            <img
+            :src="imageInfo.url + imageInfo.sizePoster + imgPoster" 
+            :alt="imgPoster ? title : ''">
 
-        <div v-if="language === 'it'">
-            <strong>lingua: </strong> 
-            <img src="../../public/flags/it.svg" alt="language">
         </div>
-        <div v-else-if="language === 'en'">
-            <strong>lingua: </strong> 
-            <img src="../../public/flags/us.svg" alt="language">
+
+        <div class="hidden">
+            <p v-show="title.length"> <strong>Titolo:</strong> {{ title }} </p>
+            <p> <strong>Titolo originale:</strong> {{ titleOrig }} </p>
+            <p> <strong>Voto:</strong> {{ vote }} </p>
+    
+            <div v-if="language === 'it'">
+                <strong>lingua: </strong> 
+                <img src="../../public/flags/it.svg" alt="language">
+            </div>
+            <div v-else-if="language === 'en'">
+                <strong>lingua: </strong> 
+                <img src="../../public/flags/us.svg" alt="language">
+            </div>
+            <div v-else-if="language === 'sq'">
+                <strong>lingua: </strong> 
+                <img src="../../public/flags/al.svg" alt="language">
+            </div>
+            <div v-else> 
+                <strong>lingua:</strong> {{ language }} 
+            </div>
         </div>
-        <div v-else-if="language === 'sq'">
-            <strong>lingua: </strong> 
-            <img src="../../public/flags/al.svg" alt="language">
-        </div>
-        <div v-else> 
-            <strong>lingua:</strong> {{ language }} 
-        </div>
+
 
     </div>
 
@@ -54,14 +67,37 @@ export default {
 <!-- STYLE -->
 <style lang="scss" scoped>
 
+@use '../assets/scss/partials/variables' as *;
+
 
 .card {
-    height: 150px;
-    width: 70px;
-    img {
-        margin-left: .3125rem;
-        width: 1.375rem;
-        vertical-align: middle;
+    height: 350px;
+    overflow: hidden;
+    background-color: $black;
+    color: $text;
+
+    .image {
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+
+
+    }
+
+    .hidden {
+        // display: none;
+        padding: 1.25rem;
+        
+
+        img {
+            margin-left: .3125rem;
+            width: 1.375rem;
+            vertical-align: middle;
+        }
     }
 }
 
