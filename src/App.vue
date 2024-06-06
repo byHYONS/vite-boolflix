@@ -46,35 +46,29 @@ export default {
          axios.get(url + searchMovie, {
             params,
          }).then(response => {
-            this.store.movieRisults = response.data.results
+            if (this.store.selectGenre === 'all' || this.store.selectGenre === 'movie'){
+               response.data.results.forEach(element => this.store.results.push(element));
+            };
          });
 
          // chiamata serie tv:
          axios.get(url + searchTv, {
             params,
          }).then(response => {
-            this.store.tvRisults = response.data.results
+
+            if (this.store.selectGenre === 'all' || this.store.selectGenre === 'tv') {              
+               response.data.results.forEach(element => this.store.results.push(element));               
+            }
          });
-
-         if (this.store.selectGenre === 'tv') {
-            this.store.risults = this.store.tvRisults;
-         } else if (this.store.selectGenre === 'movie') {
-            this.store.risults = this.store.movieRisults;
-         } else {
-            this.store.risults = [];
-            this.store.risults = this.store.risults.concat(this.store.tvRisults, this.store.movieRisults) ;
-         }
-
-
       },
+      
       // bottone search e select:
       runSearch() {
-         console.log('ho premuto il bottone search');
+         this.store.results = [];        
+         // console.log('ho premuto il bottone search');
 
          if (!this.store.userSearch.toLowerCase().trim()) return
-
          this.apiCall(this.store.userSearch);
-
 
       },
 
@@ -83,10 +77,10 @@ export default {
          console.log('ho premuto il bottorìne reset');
          this.store.userSearch = '';
          this.store.selectGenre = 'all';
+         this.store.results = [];
       }
    },
    created() {
-      this.runSearch()
       
    },
 }
