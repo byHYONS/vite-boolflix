@@ -2,6 +2,7 @@
 // istanza vue:
 export default {
     nome: 'cardComponent',
+    emits: 'readMore',
     props: [
         'title',
         'titleOrig',
@@ -11,7 +12,8 @@ export default {
         'imgPoster',
         'imageInfo',
         'text',
-        'textMin'
+        'textMin',
+        'idx'
     ],
     data() {
         return {
@@ -92,7 +94,9 @@ export default {
 
             <!-- descrizione -->
             <p> <strong>Overview:</strong> {{ textMin }} </p>
-            <button class="btn mt-20" @click="$emit(allOverview)">Leggi tutto</button>
+            <button class="btn mt-20" 
+            @click="$emit('readMore', idx)"
+            >Leggi tutto</button>
         </div>
 
 

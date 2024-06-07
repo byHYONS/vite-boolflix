@@ -59,6 +59,7 @@ footer {
     background-color: $black;
     border-top: .15rem solid $red;
     align-content: center;
+    
 
     .footer {
         width: 80%;
@@ -66,6 +67,7 @@ footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        z-index: 10;
     }
 
     h4 {

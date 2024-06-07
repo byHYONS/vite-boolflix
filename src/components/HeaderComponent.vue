@@ -60,6 +60,7 @@ header {
     background-color: $black;
     align-content: center;
     box-shadow: 0 5px 8px rgba($black, 0.3);
+    z-index: 5;
     .menu {
         width: 80%;
         margin: 0 auto;
