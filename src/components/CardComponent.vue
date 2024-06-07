@@ -39,7 +39,15 @@ export default {
         <div class="hidden">
             <p v-show="title.length"> <strong>Titolo:</strong> {{ title }} </p>
             <p v-show="title !== titleOrig"> <strong>Titolo originale:</strong> {{ titleOrig }} </p>
-            <p> <strong>Voto:</strong> {{ vote }} </p>
+            
+            <p> <strong>Voto:</strong> {{ vote }}
+
+                <span v-for="n in 5">
+
+                    <font-awesome-icon :icon="vote >= n ? ['fas', 'star'] : ['far', 'star']" />
+
+                </span>
+            </p>
 
             <div v-if="language === 'it'">
                 <strong>lingua: </strong>
@@ -58,9 +66,7 @@ export default {
             </div>
 
             <p> <strong>Overview:</strong> {{ textMin }} </p>
-            <button class="btn mt-20"
-            @click="$emit(allOverview)"
-            >Leggi tutto</button>
+            <button class="btn mt-20" @click="$emit(allOverview)">Leggi tutto</button>
         </div>
 
 
