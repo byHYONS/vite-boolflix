@@ -13,13 +13,11 @@ import footerComponent from './components/FooterComponent.vue';
 
 export default {
    nome: 'AppMain',
-   props: {
-
-   },
    data(){
       return{
         store,
         axios,
+        limit: 70,
 
       }
    },
@@ -49,17 +47,19 @@ export default {
             if (this.store.selectGenre === 'all' || this.store.selectGenre === 'movie'){
                response.data.results.forEach(element => this.store.results.push(element));
             };
+            this.truncateText();
          });
 
          // chiamata serie tv:
          axios.get(url + searchTv, {
             params,
          }).then(response => {
-
             if (this.store.selectGenre === 'all' || this.store.selectGenre === 'tv') {              
                response.data.results.forEach(element => this.store.results.push(element));               
-            }
-         });
+            };
+            this.truncateText();
+         });        
+
       },
 
       // bottone search e select:
@@ -70,9 +70,22 @@ export default {
          if (!this.store.userSearch.toLowerCase().trim()) return
          this.apiCall(this.store.userSearch);
 
+         
       },
 
-      
+      // troncare il testo lungo:
+      truncateText() {
+         console.log('spno un troncamento');
+         this.store.results.forEach(element => {
+            if (element.overview.length > this.limit) {
+               this.store.textMin = element.overview.substring(0, this.limit) + '...';
+            } else {
+               this.store.textMin = element.overview;
+            }
+            console.log(this.store.textMin);
+         })
+
+      },
 
       // bottone reset:
       reset() {

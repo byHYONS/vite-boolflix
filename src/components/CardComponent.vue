@@ -9,7 +9,9 @@ export default {
         'vote',
         'imgBackdrop',
         'imgPoster',
-        'imageInfo'
+        'imageInfo',
+        'text',
+        'textMin'
     ],
     data() {
         return {
@@ -54,6 +56,11 @@ export default {
             <div v-else>
                 <strong>lingua:</strong> {{ language }}
             </div>
+
+            <p> <strong>Overview:</strong> {{ textMin }} </p>
+            <button class="btn mt-20"
+            @click="$emit(allOverview)"
+            >Leggi tutto</button>
         </div>
 
 
@@ -71,6 +78,7 @@ export default {
 
 .card {
     height: 23.75rem;
+    border-radius: .625rem;
     overflow: hidden;
     background-color: $black;
     color: $text;
@@ -96,11 +104,23 @@ export default {
         // display: none;
         padding: 1.5625rem;
         
+        strong {
+            color: $red;
+        }
+
+        p, div {
+            margin-bottom: .5rem;
+        }
 
         img {
             margin-left: .3125rem;
             width: 1.375rem;
             vertical-align: middle;
+        }
+        button {
+            padding: .5rem .9375rem;
+            background-color: $red;
+            color: $text;
         }
     }
 }

@@ -4,6 +4,7 @@ import { reactive } from "vue";
 export const store = reactive({
     userSearch: '',
     selectGenre: 'all',
+    textMin: '',
     // risultato delle chiamate API:
     results: [],
     // API info:
@@ -22,6 +23,7 @@ export const store = reactive({
         url: 'https://image.tmdb.org/t/p/',
         sizeBackdrop: 'w780',
         sizePoster: 'w342',
-    }
+    },  
+
 
 })
