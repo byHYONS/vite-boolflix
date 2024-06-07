@@ -9,7 +9,8 @@ export default {
     },
     data() {
         return {
-           logo: 'BOOLFLIX'
+           logo: 'BOOLFLIX',
+           credits: '© byHYONS™'
 
         }
     },
@@ -26,10 +27,17 @@ export default {
     <footer>
 
         <div class="footer">
-            <div class="creats">
+            <div class="logo">
 
                 <!-- logo brand -->
                 <h4> {{ logo }} </h4>
+
+            </div>
+            <div class="credits">
+
+                <!-- cretits -->
+                <h5> {{ credits }} </h5>
+
             </div>
         </div>
 
@@ -63,6 +71,9 @@ footer {
     h4 {
         font-size: 1.5rem;
         font-weight: 900;
+        color: $text;
+    }
+    h5 {
         color: $text;
     }
 }

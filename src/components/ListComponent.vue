@@ -73,6 +73,7 @@ main {
     main {
         .col {
             @include col-x(3, 25px)
+            
         }
     }
 }

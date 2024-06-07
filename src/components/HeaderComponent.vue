@@ -53,10 +53,13 @@ export default {
 
 
 header {
+    position: sticky;
+    top: 0;
     width: 100%;
     min-height: 5rem;
     background-color: $black;
     align-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     .menu {
         width: 80%;
         margin: 0 auto;

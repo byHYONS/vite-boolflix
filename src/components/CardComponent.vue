@@ -74,6 +74,7 @@ export default {
 <style lang="scss" scoped>
 
 @use '../assets/scss/partials/variables' as *;
+@use '../assets/scss/partials/extende' as *;
 
 
 .card {
@@ -82,26 +83,32 @@ export default {
     overflow: hidden;
     background-color: $black;
     color: $text;
+    @extend %shadow;
 
     &:hover .image {
         display: none;
+
+    }
+
+    &:hover .hidden {
+        display: block;
     }
 
     .image {
 
         img {
+            display: block;
             width: 100%;
             height: auto;
             object-fit: cover;
             object-position: center;
         }
-
-
-
     }
 
     .hidden {
-        // display: none;
+        max-height: 21.125rem;
+        overflow: auto;
+        display: none;
         padding: 1.5625rem;
         
         strong {

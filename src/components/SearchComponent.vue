@@ -39,9 +39,9 @@ export default {
         </select>
 
         <!-- bottone ricerca -->
-        <div class="buttons">
+        <div class="buttons ml-15">
             <button class="btn search"
-            @click="$emit('search')">Search</button>
+            @click="$emit('search')"><strong>Search</strong></button>
      
             <!-- bottone reset -->
             <button class="btn reset"
@@ -61,14 +61,41 @@ export default {
 
 .search-bar {
     text-align: center;
-
+    input {
+        padding: .5rem .75rem;
+        border-radius: .625rem;
+        border: unset;
+        background-color: $black;
+        border: .12rem solid $gray;
+        color: $text;
+        &:focus {
+            outline: none;
+        }
+    }
+    select {
+        @extend input;
+        margin-left: .625rem;
+    }
+    button {
+        @extend select;
+        &.search {
+            background-color: $gray;
+            border: .01rem solid $ligthGray;
+            color: $text3;
+        }
+        &.reset {
+            background-color: $red;
+            color: $text;
+            border: .01rem solid $red;
+        }
+    }
     .buttons {
        
         display: inline-block;
     }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 651px) {
     .search-bar {
         .buttons {
             margin-top: 1.25rem;

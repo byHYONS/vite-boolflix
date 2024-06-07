@@ -6,3 +6,8 @@
 @use './partials/extende' as *;
 @use './partials/mixin' as *;
 @use './partials/common' as *;
+
+
+body {
+    @include checkerboard(15px, $gray, $ligthGray)
+}

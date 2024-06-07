@@ -34,7 +34,6 @@ export default {
          const params = {
             api_key: this.store.apiInfo.apiKey,
             query: query,
-
          }
 
          // destrutturo ed estraggo parametri da store.apiInfo per migliorare leggibilità:
@@ -46,7 +45,7 @@ export default {
          }).then(response => {
             if (this.store.selectGenre === 'all' || this.store.selectGenre === 'movie'){
                response.data.results.forEach(element => {
-                  this.store.results.push(element)
+                  this.store.results.push(element)                               // assegno il valore alla variabile result in store
                   element.stars = this.calculateStars(element.vote_average);     // per calcolo stelle
                   element.textMin = this.truncateText(element.overview);         // per troncamento testo
                });
@@ -59,9 +58,9 @@ export default {
          }).then(response => {
             if (this.store.selectGenre === 'all' || this.store.selectGenre === 'tv') {              
                response.data.results.forEach(element => {
-                  this.store.results.push(element)
-                  element.stars = this.calculateStars(element.vote_average);  
-                  element.textMin = this.truncateText(element.overview);        
+                  this.store.results.push(element)                               // assegno il valore alla variabile result in store
+                  element.stars = this.calculateStars(element.vote_average);     // per calcolo stelle
+                  element.textMin = this.truncateText(element.overview);         // per troncamento testo
                });   
             };
          });        
@@ -79,7 +78,7 @@ export default {
 
       // calcolo delle stelle:
       calculateStars(voteAverage) {
-         return Math.ceil(voteAverage / 2);
+         return Math.ceil(voteAverage / 2);                                      // arrotondo per eccesso
       },
 
       // troncare il testo lungo:
@@ -124,8 +123,6 @@ export default {
 
 <!-- STYLE -->
 <style lang="scss" scoped>
-// import
-
-
+// import:
 
 </style>
