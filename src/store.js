@@ -5,6 +5,10 @@ export const store = reactive({
     userSearch: '',
     selectGenre: 'all',
     textMin: '',
+    stars: {
+        totalStars: 5,
+        averangeStars: '',
+    },
     // risultato delle chiamate API:
     results: [],
     // API info:

@@ -46,7 +46,8 @@ export default {
          }).then(response => {
             if (this.store.selectGenre === 'all' || this.store.selectGenre === 'movie'){
                response.data.results.forEach(element => this.store.results.push(element));
-            };
+               };
+            this.calculateStar();
             this.truncateText();
          });
 
@@ -56,7 +57,8 @@ export default {
          }).then(response => {
             if (this.store.selectGenre === 'all' || this.store.selectGenre === 'tv') {              
                response.data.results.forEach(element => this.store.results.push(element));               
-            };
+               };
+            this.calculateStar();
             this.truncateText();
          });        
 
@@ -71,6 +73,14 @@ export default {
          this.apiCall(this.store.userSearch);
 
          
+      },
+
+      // calcolare il voto:
+      calculateStar() {
+         this.store.results.forEach(element => {
+            this.store.stars.averangeStars = Math.ceil(element.vote_average / 2);
+            console.log(this.store.stars.averangeStars);
+         })
       },
 
       // troncare il testo lungo:

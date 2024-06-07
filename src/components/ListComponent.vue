@@ -34,7 +34,7 @@ export default {
                 :title="cards.title ? cards.title : cards.name"                
                 :titleOrig="cards.original_title ? cards.original_title : cards.original_name" 
                 :language="cards.original_language" 
-                :vote="cards.vote_average"              
+                :vote="store.stars.averangeStars"              
                 :imgBackdrop="cards.backdrop_path"              
                 :imgPoster="cards.poster_path"              
                 :imageInfo="store.imageInfo"              
