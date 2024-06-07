@@ -19,6 +19,41 @@ export default {
 
         }
     },
+    methods: {
+        // metodo per assegnare le bandierina:
+        flags(language){
+            switch (language) {
+                case 'sq':
+                    return '../../public/flags/al.svg';
+                case 'ca':
+                    return '../../public/flags/ca.svg';
+                case 'cn':
+                    return '../../public/flags/cn.svg';
+                case 'de':
+                    return '../../public/flags/de.svg';
+                case 'fr':
+                    return '../../public/flags/fr.svg';
+                case 'no':
+                    return '../../public/flags/no.svg';
+                case 'in':
+                    return '../../public/flags/in.svg';
+                case 'it':
+                    return '../../public/flags/it.svg';
+                case 'ja':
+                    return '../../public/flags/jp.svg';
+                case 'ru':
+                    return '../../public/flags/ru.svg';
+                case 'en':
+                    return '../../public/flags/us.svg';
+                case 'es':
+                    return '../../public/flags/es.svg';
+                case 'ko':
+                    return '../../public/flags/kr.svg';
+                default:
+                    return language;
+            }
+        }
+    },
     
 }
 
@@ -30,41 +65,32 @@ export default {
 
     <div class="card">
 
+        <!-- immagine -->
         <div class="image">
             <img :src="imgPoster ? imageInfo.url + imageInfo.sizePoster + imgPoster : '../../public/img/no-image.webp'"
                 :alt="imgPoster ? title : ''">
-
         </div>
 
+        <!-- info in hover -->
         <div class="hidden">
             <p v-show="title.length"> <strong>Titolo:</strong> {{ title }} </p>
             <p v-show="title !== titleOrig"> <strong>Titolo originale:</strong> {{ titleOrig }} </p>
-            
-            <p> <strong>Voto:</strong> {{ vote }}
 
-                <span v-for="n in 5">
-
-                    <font-awesome-icon :icon="vote >= n ? ['fas', 'star'] : ['far', 'star']" />
-
+            <!-- voto: stars -->
+            <p> <strong>Voto: </strong>
+                <span v-for="n in 5" :key="n">
+                    <font-awesome-icon :icon="vote >= n ? ['fas', 'star'] : ['far', 'star']"
+                        :class="{ 'full-star': vote >= n }" />
                 </span>
             </p>
-
-            <div v-if="language === 'it'">
+            
+            <!-- lingua: bandiera -->
+            <div>
                 <strong>lingua: </strong>
-                <img src="../../public/flags/it.svg" alt="language">
-            </div>
-            <div v-else-if="language === 'en'">
-                <strong>lingua: </strong>
-                <img src="../../public/flags/us.svg" alt="language">
-            </div>
-            <div v-else-if="language === 'sq'">
-                <strong>lingua: </strong>
-                <img src="../../public/flags/al.svg" alt="language">
-            </div>
-            <div v-else>
-                <strong>lingua:</strong> {{ language }}
+                <img :src="flags(language)" :alt="language">
             </div>
 
+            <!-- descrizione -->
             <p> <strong>Overview:</strong> {{ textMin }} </p>
             <button class="btn mt-20" @click="$emit(allOverview)">Leggi tutto</button>
         </div>
@@ -90,6 +116,8 @@ export default {
     background-color: $black;
     color: $text;
     @extend %shadow;
+    
+    .full-star {color: $stars}
 
     &:hover .image {
         display: none;
