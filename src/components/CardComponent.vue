@@ -38,7 +38,7 @@ export default {
 
         <div class="hidden">
             <p v-show="title.length"> <strong>Titolo:</strong> {{ title }} </p>
-            <p> <strong>Titolo originale:</strong> {{ titleOrig }} </p>
+            <p v-show="title !== titleOrig"> <strong>Titolo originale:</strong> {{ titleOrig }} </p>
             <p> <strong>Voto:</strong> {{ vote }} </p>
 
             <div v-if="language === 'it'">

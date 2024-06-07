@@ -34,12 +34,12 @@ export default {
                 :title="cards.title ? cards.title : cards.name"                
                 :titleOrig="cards.original_title ? cards.original_title : cards.original_name" 
                 :language="cards.original_language" 
-                :vote="store.stars.averangeStars"              
+                :vote="cards.stars"              
                 :imgBackdrop="cards.backdrop_path"              
                 :imgPoster="cards.poster_path"              
                 :imageInfo="store.imageInfo"              
                 :text="cards.overview"              
-                :textMin="store.textMin"              
+                :textMin="cards.textMin"              
                 :key="index" />
 
             </div>

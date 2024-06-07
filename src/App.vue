@@ -45,10 +45,12 @@ export default {
             params,
          }).then(response => {
             if (this.store.selectGenre === 'all' || this.store.selectGenre === 'movie'){
-               response.data.results.forEach(element => this.store.results.push(element));
-               };
-            this.calculateStar();
-            this.truncateText();
+               response.data.results.forEach(element => {
+                  this.store.results.push(element)
+                  element.stars = this.calculateStars(element.vote_average);     // per calcolo stelle
+                  element.textMin = this.truncateText(element.overview);         // per troncamento testo
+               });
+            };
          });
 
          // chiamata serie tv:
@@ -56,10 +58,12 @@ export default {
             params,
          }).then(response => {
             if (this.store.selectGenre === 'all' || this.store.selectGenre === 'tv') {              
-               response.data.results.forEach(element => this.store.results.push(element));               
-               };
-            this.calculateStar();
-            this.truncateText();
+               response.data.results.forEach(element => {
+                  this.store.results.push(element)
+                  element.stars = this.calculateStars(element.vote_average);  
+                  element.textMin = this.truncateText(element.overview);        
+               });   
+            };
          });        
 
       },
@@ -70,31 +74,18 @@ export default {
          // console.log('ho premuto il bottone search');
 
          if (!this.store.userSearch.toLowerCase().trim()) return
-         this.apiCall(this.store.userSearch);
-
-         
+         this.apiCall(this.store.userSearch);   
       },
 
-      // calcolare il voto:
-      calculateStar() {
-         this.store.results.forEach(element => {
-            this.store.stars.averangeStars = Math.ceil(element.vote_average / 2);
-            console.log(this.store.stars.averangeStars);
-         })
+      // calcolo delle stelle:
+      calculateStars(voteAverage) {
+         return Math.ceil(voteAverage / 2);
       },
 
       // troncare il testo lungo:
-      truncateText() {
+      truncateText(text) {
          console.log('spno un troncamento');
-         this.store.results.forEach(element => {
-            if (element.overview.length > this.limit) {
-               this.store.textMin = element.overview.substring(0, this.limit) + '...';
-            } else {
-               this.store.textMin = element.overview;
-            }
-            console.log(this.store.textMin);
-         })
-
+         return text.length > this.limit ? text.substring(0, this.limit) + '...' : text;
       },
 
       // bottone reset:
