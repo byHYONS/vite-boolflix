@@ -56,13 +56,16 @@ export default {
 <template>
 
     <main>
-        <div class="overlay" :class="{'hidden': overlay}">
+        <!-- per la modale -->
+        <div class="ovrlay" :class="{'hidden': overlay}">
         </div>
         <div class="container-80">
+            <!-- info risultati -->
             <div v-show="store.results.length" class="results">
                 <p>risultati: <strong> {{ store.results.length }} </strong></p>
             </div>
             <div class="row gap-25 py-50">
+                <!-- componente card -->
                 <cardComponent class="col" v-for="(cards, index) in store.results"
                     :title="cards.title ? cards.title : cards.name"
                     :titleOrig="cards.original_title ? cards.original_title : cards.original_name"
@@ -72,10 +75,13 @@ export default {
 
             </div>
 
+            <!-- modale -->
             <div class="card-info" :class="{'hidden': modale}">
-                <img :src="overview.backdrop_path ? store.imageInfo.url + store.imageInfo.sizeBackdrop + overview.backdrop_path : ''"
-                    :alt="overview.backdrop_path ? overview.title : ''">
-                <h3>{{overview.title}}</h3>
+                <div class="image">
+                    <img :src="overview.backdrop_path ? store.imageInfo.url + store.imageInfo.sizeBackdrop + overview.backdrop_path : ''"
+                        :alt="overview.backdrop_path ? overview.title : ''">
+                    <h3>{{overview.title || overview.name}}</h3>
+                </div>
                 <div class="info">
                     <p><strong>Overview: </strong>{{ overview.overview }}</p>
                     <p><strong class="mt-5">Voto: </strong>
@@ -106,14 +112,16 @@ export default {
 @use '../assets/scss/partials/extende' as *;
 
 main {
-    .overlay {
-        background-color: rgba($black, 0.95) !important;
+    .ovrlay {
+        background-color: rgba($black, 0.80);
         position: fixed;
         top: 0;
         left: 0;
+        right: 0;
+        bottom: 0;
         width: 100vw;
         height: 100vh;
-        z-index: 50;       
+        z-index: 50; 
     }
     .container-80 {
         position: relative;
@@ -123,7 +131,8 @@ main {
             @extend %shadow;
             width: 12.5rem;
             margin-top: 1.875rem;
-            background-color: $gray;
+            background-color: $black;
+            border: .0938rem solid $ligthGray;
             color: $text;
             border-radius: .625rem;
             padding: .75rem 1.25rem;
@@ -132,10 +141,7 @@ main {
             }
         }
     }
-
-    .col {
-        @include col-x(4, 25px)
-    }
+    .col {@include col-x(4, 25px)}
     .hidden {display: none;}
     .card-info{
         position: fixed;
@@ -145,7 +151,7 @@ main {
         overflow: hidden;
         border-radius: .9375rem;
         background-color: $black;
-        width: 45%;
+        width: 60%;
         height: 600px;
         overflow: scroll;
         @extend %shadow;
@@ -159,16 +165,18 @@ main {
             p {color: $text;}
         }
         .full-star {color: $stars}
-        
-        h3 {
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: .625rem 1.5625rem;
-            background-color: rgba($black, .7);
-            border-radius: .9375rem;
-            color: $ligthGray;
+        .image {
+            position: relative;            
+            h3 {
+                position: absolute;
+                top: 80%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: .625rem 1.5625rem;
+                background-color: rgba($black, .7);
+                border-radius: .9375rem;
+                color: $ligthGray;
+            }
         }
         button {
             margin-top: .9375rem;
@@ -179,30 +187,51 @@ main {
     }
 }
 
-
 // responsive:
+// desktop piccoli
 @media screen and (max-width: 992px) {
     main {
         .col {
-            @include col-x(3, 25px)
-            
+            @include col-x(3, 25px)           
         }
+        .card-info {
+                width: 70%;
+                height: 31.25rem;
+            }
     }
 }
-
+// tablet
 @media screen and (max-width: 768px) {
     main {
         .col {
             @include col-x(2, 25px)
         }
+        .card-info {
+                width: 80%;
+                height: 31.25rem;
+                .image{
+                    h3 {
+                        font-size: 1.75rem;
+                    }
+                }
+            }
     }
 }
-
+// mobile
 @media screen and (max-width: 576px) {
      main {
         .col {
-            @include col-x(1, 25px)
+            @include col-x(1, 25px);
         }
+        .card-info {
+                width: 90%;
+                height: 31.25rem;
+                .image{
+                    h3 {
+                        font-size: 1.5625rem;
+                    }
+                }
+            }
     }
 }
 

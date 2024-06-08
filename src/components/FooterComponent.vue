@@ -54,6 +54,8 @@ export default {
 
 
 footer {
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 6.25rem;
     background-color: $black;

@@ -4,7 +4,7 @@ import { store } from '../store';
 
 export default {
     nome: 'searchComponent',
-    emits: ['search', 'reset', 'changeSelect'],
+    emits: ['search', 'reset', 'changeSelect', 'enter'],
     
     data() {
         return {
@@ -25,6 +25,7 @@ export default {
 
         <!-- input di ricerca -->
         <input type="text" placeholder="Search"
+        @keyup.enter="$emit('enter')"
         v-model="store.userSearch">
 
         <!-- menù selezione a tendina -->
@@ -41,11 +42,13 @@ export default {
         <!-- bottone ricerca -->
         <div class="buttons ml-15">
             <button class="btn search"
-            @click="$emit('search')"><strong>Search</strong></button>
+            @click="$emit('search')"
+            ><strong>Search</strong></button>
      
             <!-- bottone reset -->
             <button class="btn reset"
-            @click="$emit('reset')">Reset</button>
+            @click="$emit('reset')"
+            >Reset</button>
         </div>
 
     </div>

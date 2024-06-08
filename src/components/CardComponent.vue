@@ -114,49 +114,32 @@ export default {
 
 
 .card {
-    height: 23.75rem;
     border-radius: .625rem;
     overflow: hidden;
     background-color: $black;
     color: $text;
-    @extend %shadow;
-    
+    @extend %shadow;    
     .full-star {color: $stars}
-
     &:hover .image {
         display: none;
-
     }
-
-    &:hover .hidden {
-        display: block;
-    }
-
+    &:hover .hidden {display: block;}
     .image {
-
         img {
             display: block;
             width: 100%;
-            height: auto;
+            height: 23rem;
             object-fit: cover;
             object-position: center;
         }
     }
-
     .hidden {
-        max-height: 21.125rem;
+        height: 23rem;
         overflow: auto;
         display: none;
-        padding: 1.5625rem;
-        
-        strong {
-            color: $red;
-        }
-
-        p, div {
-            margin-bottom: .5rem;
-        }
-
+        padding: 1.5625rem;       
+        strong {color: $red;}
+        p, div {margin-bottom: .5rem;}
         img {
             margin-left: .3125rem;
             width: 1.375rem;

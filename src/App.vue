@@ -17,6 +17,7 @@ export default {
       return{
         store,
         axios,
+        loading: true,
         limit: 70,
 
       }
@@ -31,6 +32,7 @@ export default {
       // chiamata API:
       apiCall(query) {
          // query params:
+         this.loading = false; // quando carica la pagina
          const params = {
             api_key: this.store.apiInfo.apiKey,
             query: query,
@@ -48,6 +50,7 @@ export default {
                   this.store.results.push(element)                               // assegno il valore alla variabile result in store
                   element.stars = this.calculateStars(element.vote_average);     // per calcolo stelle
                   element.textMin = this.truncateText(element.overview);         // per troncamento testo
+                  this.loading = true;       
                });
             };
          });
@@ -61,6 +64,8 @@ export default {
                   this.store.results.push(element)                               // assegno il valore alla variabile result in store
                   element.stars = this.calculateStars(element.vote_average);     // per calcolo stelle
                   element.textMin = this.truncateText(element.overview);         // per troncamento testo
+                  this.loading = true;       
+
                });   
             };
          });        
@@ -106,14 +111,17 @@ export default {
 <!-- HTML -->
 <template>
 
-   
    <headerComponent class="header" 
    @search="runSearch()"
+   @enter="runSearch()"
    @reset="reset()"
    @changeSelect="runSearch()" />
    
-      <!-- <p class="ta-center mt-25"> {{ store.movieRisults }}</p> -->
-   
+   <!-- caricampento pagina -->
+   <div class="ovrlay" v-if="!loading">
+      <h3>Caricamento...</h3>
+   </div>
+
    <listComponent />
 
    <footerComponent />
@@ -124,5 +132,25 @@ export default {
 <!-- STYLE -->
 <style lang="scss" scoped>
 // import:
+@use '../src/assets/scss/partials/variables' as *;
+
+.ovrlay {
+   background-color: rgba($black, 0.80);
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   width: 100vw;
+   height: 100vh;
+   z-index: 50;
+   h3 {
+      text-align: center;
+      color: $text;
+      font-size: 3.4375rem;
+      align-content: center;
+      line-height: 100vh;
+   }
+}
 
 </style>

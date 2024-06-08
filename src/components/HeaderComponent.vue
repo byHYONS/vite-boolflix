@@ -4,7 +4,7 @@ import searchComponent from './SearchComponent.vue';
 
 export default {
     nome: 'headerComponent',
-    emits: ['serch', 'reset', 'changeSelect'],
+    emits: ['serch', 'reset', 'changeSelect', 'enter'],
     
     data() {
         return {
@@ -34,6 +34,7 @@ export default {
             <!-- componente per la ricerca -->
             <searchComponent 
             @search="$emit('search')"
+            @enter="$emit('enter')"
             @reset="$emit('reset')"
             @changeSelect="$emit('changeSelect')" />
 
