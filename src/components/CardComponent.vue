@@ -26,31 +26,31 @@ export default {
         flags(language){
             switch (language) {
                 case 'sq':
-                    return '../../public/flags/al.svg';
+                    return '/flags/al.svg';
                 case 'ca':
-                    return '../../public/flags/ca.svg';
+                    return '/flags/ca.svg';
                 case 'cn':
-                    return '../../public/flags/cn.svg';
+                    return '/flags/cn.svg';
                 case 'de':
-                    return '../../public/flags/de.svg';
+                    return '/flags/de.svg';
                 case 'fr':
-                    return '../../public/flags/fr.svg';
+                    return '/flags/fr.svg';
                 case 'no':
-                    return '../../public/flags/no.svg';
+                    return '/flags/no.svg';
                 case 'in':
-                    return '../../public/flags/in.svg';
+                    return '/flags/in.svg';
                 case 'it':
-                    return '../../public/flags/it.svg';
+                    return '/flags/it.svg';
                 case 'ja':
-                    return '../../public/flags/jp.svg';
+                    return '/flags/jp.svg';
                 case 'ru':
-                    return '../../public/flags/ru.svg';
+                    return '/flags/ru.svg';
                 case 'en':
-                    return '../../public/flags/us.svg';
+                    return '/flags/us.svg';
                 case 'es':
-                    return '../../public/flags/es.svg';
+                    return '/flags/es.svg';
                 case 'ko':
-                    return '../../public/flags/kr.svg';
+                    return '/flags/kr.svg';
                 default:
                     return language;
             }
@@ -69,7 +69,7 @@ export default {
 
         <!-- immagine -->
         <div class="image">
-            <img :src="imgPoster ? imageInfo.url + imageInfo.sizePoster + imgPoster : '../../public/img/no-image.webp'"
+            <img :src="imgPoster ? imageInfo.url + imageInfo.sizePoster + imgPoster : '/img/no-image.webp'"
                 :alt="imgPoster ? title : ''">
         </div>
 

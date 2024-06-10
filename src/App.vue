@@ -118,7 +118,7 @@ export default {
    @changeSelect="runSearch()" />
    
    <!-- caricampento pagina -->
-   <div class="ovrlay" v-if="!loading">
+   <div class="ovrlay" v-if="!loading && !store.results">
       <h3>Caricamento...</h3>
    </div>
 
